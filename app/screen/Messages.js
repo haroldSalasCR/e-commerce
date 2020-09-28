@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, FlatList, View } from "react-native";
+import { StyleSheet, FlatList, View, SafeAreaView } from "react-native";
 
 import ListItem from "../components/ListItem";
 import Separator from "../components/Separator";
+import ListItemDeleteAction from "../components/ListItemDeleteAction";
 
 const messages = [
   {
@@ -19,25 +20,33 @@ const messages = [
   },
 ];
 
-const Messages = () => {
+const Messages = (props) => {
   return (
-    <FlatList
-      data={}
-      keyExtractor={(message) => message.id.toString()}
-      renderItem={({ item }) => (
-        <ListItem
-          title={item.title}
-          description={item.description}
-          image={item.image}
-          onPress={() => console.log("Message Selected", item)}
-          renderRightActions={() => <View></View>}
-        />
-      )}
-      ItemSeparatorComponent={() => <Separator />}
-    />
+    <SafeAreaView style={styles.screen}>
+      <FlatList
+        data={messages}
+        keyExtractor={(message) => message.id.toString()}
+        renderItem={({ item }) => (
+          <ListItem
+            title={item.title}
+            description={item.description}
+            image={item.image}
+            onPress={() => console.log("Message Selected", item)}
+            renderRightActions={() => (
+              <ListItemDeleteAction></ListItemDeleteAction>
+            )}
+          />
+        )}
+        ItemSeparatorComponent={() => <Separator />}
+      />
+    </SafeAreaView>
   );
 };
 
 export default Messages;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  screen: {
+    paddingTop: 20,
+  },
+});
