@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, FlatList, View, SafeAreaView } from "react-native";
 
 import ListItem from "../components/ListItem";
 import Separator from "../components/Separator";
 import ListItemDeleteAction from "../components/ListItemDeleteAction";
+import Screen from "../components/Screen";
 
-const messages = [
+const initMessages = [
   {
     id: 1,
     title: "T1",
@@ -21,8 +22,17 @@ const messages = [
 ];
 
 const Messages = (props) => {
+  const [messages, setMessages] = useState(initMessages);
+  const [refreshing, setRefreshing] = useState(false);
+
+  const handleDelete = (message) => {
+    const newMessages = messages.filter((m) => m.id !== message.id);
+    console.log(newMessages);
+    setMessages(newMessages);
+  };
+
   return (
-    <SafeAreaView style={styles.screen}>
+    <Screen>
       <FlatList
         data={messages}
         keyExtractor={(message) => message.id.toString()}
@@ -33,20 +43,25 @@ const Messages = (props) => {
             image={item.image}
             onPress={() => console.log("Message Selected", item)}
             renderRightActions={() => (
-              <ListItemDeleteAction></ListItemDeleteAction>
+              <ListItemDeleteAction onPress={() => handleDelete(item)} />
             )}
           />
         )}
         ItemSeparatorComponent={() => <Separator />}
+        refreshing={refreshing}
+        onRefresh={() =>
+          setMessages([
+            {
+              id: 3,
+              title: "T3",
+              description: "D3",
+              image: require("../assets/mosh.jpg"),
+            },
+          ])
+        }
       />
-    </SafeAreaView>
+    </Screen>
   );
 };
 
 export default Messages;
-
-const styles = StyleSheet.create({
-  screen: {
-    paddingTop: 20,
-  },
-});

@@ -6,9 +6,14 @@ import Card from "./app/components/Card";
 import ListingDetails from "./app/screen/ListingDetails";
 import ViewImage from "./app/screen/ViewImage";
 import Messages from "./app/screen/Messages";
+import Icon from "./app/components/Icon";
+import ListItem from "./app/components/ListItem";
+import Account from "./app/screen/Account";
+import Screen from "./app/components/Screen";
+import Listings from "./app/screen/Listings";
 
 export default function App() {
-  return <Messages />;
+  return <Listings />;
 }
 
 const styles = StyleSheet.create({});
