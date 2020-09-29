@@ -12,6 +12,7 @@ import Screen from "./app/components/Screen";
 import Listings from "./app/screen/Listings";
 import AppTextInput from "./app/components/AppTextInput";
 import AppPicker from "./app/components/AppPicker";
+import Login from "./app/screen/Login";
 
 const categories = [
   { label: "Categoria - 1", value: 1 },
@@ -23,16 +24,5 @@ const categories = [
 
 export default function App() {
   const [category, setCategory] = useState();
-  return (
-    <Screen>
-      <AppPicker
-        selectedItem={category}
-        onSelectItem={(item) => setCategory(item)}
-        items={categories}
-        placeholder="Category"
-        icon="apps"
-      />
-      <AppTextInput placeholder="Category" icon="apps" />
-    </Screen>
-  );
+  return <Login />;
 }
