@@ -1,6 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react";
 import Welcome from "./app/screen/Welcome";
 import Card from "./app/components/Card";
 import ListingDetails from "./app/screen/ListingDetails";
@@ -12,9 +11,28 @@ import Account from "./app/screen/Account";
 import Screen from "./app/components/Screen";
 import Listings from "./app/screen/Listings";
 import AppTextInput from "./app/components/AppTextInput";
+import AppPicker from "./app/components/AppPicker";
+
+const categories = [
+  { label: "Categoria - 1", value: 1 },
+  { label: "Categoria - 2", value: 2 },
+  { label: "Categoria - 3", value: 3 },
+  { label: "Categoria - 4", value: 4 },
+  { label: "Categoria - 5", value: 5 },
+];
 
 export default function App() {
-  return <AppTextInput placeholder="Username" icon="email" />;
+  const [category, setCategory] = useState();
+  return (
+    <Screen>
+      <AppPicker
+        selectedItem={category}
+        onSelectItem={(item) => setCategory(item)}
+        items={categories}
+        placeholder="Category"
+        icon="apps"
+      />
+      <AppTextInput placeholder="Category" icon="apps" />
+    </Screen>
+  );
 }
-
-const styles = StyleSheet.create({});
