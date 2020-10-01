@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ListingEdit from "./app/screen/ListingEdit";
 
 import Login from "./app/screen/Login";
+import Register from "./app/screen/Register";
 
 const categories = [
   { label: "Categoria - 1", value: 1 },
@@ -13,5 +14,5 @@ const categories = [
 
 export default function App() {
   const [category, setCategory] = useState();
-  return <ListingEdit />;
+  return <Register />;
 }
