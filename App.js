@@ -3,16 +3,11 @@ import ListingEdit from "./app/screen/ListingEdit";
 
 import Login from "./app/screen/Login";
 import Register from "./app/screen/Register";
-
-const categories = [
-  { label: "Categoria - 1", value: 1 },
-  { label: "Categoria - 2", value: 2 },
-  { label: "Categoria - 3", value: 3 },
-  { label: "Categoria - 4", value: 4 },
-  { label: "Categoria - 5", value: 5 },
-];
+import ImageInputList from "./app/components/ImageInputList";
+import Screen from "./app/components/Screen";
 
 export default function App() {
-  const [category, setCategory] = useState();
+  const [imageUris, setImageUris] = useState([]);
+
   return <ListingEdit />;
 }
