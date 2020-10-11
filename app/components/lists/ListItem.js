@@ -32,7 +32,7 @@ const ListItem = ({
           </View>
           <MaterialCommunityIcons
             color={colors.medium}
-            name="chvron-right"
+            name="chevron-right"
             size={25}
           />
         </View>
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     borderRadius: 35,
   },
   titleDesc: {
-    felx: 1,
+    flex: 1,
     marginLeft: 10,
     justifyContent: "center",
   },
