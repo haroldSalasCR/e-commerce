@@ -1,22 +1,23 @@
 import React, { useState } from "react";
-import { StyleSheet, FlatList, View, SafeAreaView } from "react-native";
+import { FlatList } from "react-native";
 
-import ListItem from "../components/ListItem";
-import Separator from "../components/Separator";
-import ListItemDeleteAction from "../components/ListItemDeleteAction";
+import ListItem from "../components/lists/ListItem";
+import Separator from "../components/lists/Separator";
+import ListItemDeleteAction from "../components/lists/ListItemDeleteAction";
 import Screen from "../components/Screen";
 
 const initMessages = [
   {
     id: 1,
     title: "T1",
-    description: "D1",
+    description: "Hey! Is this item still available?",
     image: require("../assets/mosh.jpg"),
   },
   {
     id: 2,
     title: "T2",
-    description: "D2",
+    description:
+      "I'm interested in this item. When will you be able to post it?",
     image: require("../assets/mosh.jpg"),
   },
 ];
@@ -26,9 +27,7 @@ const Messages = (props) => {
   const [refreshing, setRefreshing] = useState(false);
 
   const handleDelete = (message) => {
-    const newMessages = messages.filter((m) => m.id !== message.id);
-    console.log(newMessages);
-    setMessages(newMessages);
+    setMessages(messages.filter((m) => m.id !== message.id));
   };
 
   return (
@@ -47,7 +46,7 @@ const Messages = (props) => {
             )}
           />
         )}
-        ItemSeparatorComponent={() => <Separator />}
+        ItemSeparatorComponent={Separator}
         refreshing={refreshing}
         onRefresh={() =>
           setMessages([
